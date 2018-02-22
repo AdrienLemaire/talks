@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!--
+    This is a copy of the official impress.js demo by Bartek Szopka. In this copy I've added
+    js and css files from the impressionist wysiwyg editor. The purpose is not so much to
+    actually use this presentation as a template, but rather just demo the features of impressionist
+    with this well known impress.js presentation.
+
+    Since the idea is to demo a wysiwyg editor, I've also removed all the comments that were in this file.
+
+    For the original impress.js demo (with the comments) that this was copied from, see
+    https://github.com/henrikingo/impress.js/index.html
+
+-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Introduction to Kubernetes | by Adrien Lemaire @Fandekasp</title>
+
+    <meta name="description" content="Kubernetes presentation on 2018/02/24 at OWDDM" />
+    <meta name="author" content="Adrien Lemaire" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="impress.js/css/impress-demo.css" rel="stylesheet" />
+    <link href="kubernetes.css" rel="stylesheet" />
+</head>
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="history_1" class="step slide" data-x="-1000" data-y="-1500">
+        <q>A very long time ago... <br />Expert system administrators used cartridges, cassettes tapes, floppy disks and optical media</q>
+        <span class="notes">
+            Before the internet, people had to distribute software across cartridges,
+            then cassette tapes, then floppy disks, and optical media.
+        </span>
+    </div>
+
+    <div id="history_2" class="step slide" data-x="0" data-y="-1500">
+        <q>Then came the advent of <strong>Internet</strong></q>
+        <span class="notes">
+            With the advent of internet, we could remotely update software, and
+            devops were making their own scripts to automate parts of the process.
+        </span>
+    </div>
+
+    <div id="history_3" class="step slide text_align" data-x="1000" data-y="-1500">
+        <p>The next logical steps were PaaS and IaaS!</p>
+        <img src="static/history_3.jpg" />
+        <div class="notes">
+            Then came Platforms as a Software. Through APIs, not only could we update software but also the hardware running it.<br />
+            <ul>
+                <li>Red Hat OpenShift</li>
+                <li>Google App Engine</li>
+                <li>Heroku</li>
+                <li>Windows Azure Cloud</li>
+                <li>Amazon AWS</li>
+                <li>you name it...</li>
+            </ul>
+            And IaaS services
+            <ul>
+                <li>Most of the PaaS named previously also offer IaaS services</li>
+                <li>Google App Engine → Google Compute Engine</li>
+            </ul>
+
+            <span>
+                <strong>SaaS</strong>: deliver software to clients without them needing any installation (eg web apps)
+            </span><br />
+            <span>
+                <strong>PaaS</strong>: Rely on 3rd parties to handle the infrastructure, and use their tools to launch instances, configure your network and install your software.
+            </span><br />
+            <span>
+                <strong>IaaS</strong>: Automate infrastructure deployment through APIs, set rules to trigger actions.
+            </span>
+        </div>
+    </div>
+
+    <div id="history_4" class="step slide text_align" data-x="2000" data-y="-1500">
+        <q> IaC to the rescue</q>
+            <img src="static/history_4_ansible.png" />
+            <img src="static/history_4_chef.png" />
+            <img src="static/history_4_puppet.png" />
+            <img src="static/history_4_saltstack.png" />
+            <img src="static/history_4_fabric.png" />
+            <img src="static/history_4_terraform.png" />
+        <div class="notes">
+            Infrastructure as Code IaC<br />
+            Ansible, Chef, Puppet, SaltStack, Fabric, Terraform …<br />
+            Process of managing and provisioning servers through definition files rather than configuration tools.<br />
+            Promoted for cloud computing, often confused with Infrastructure as a Service (IaaS)<br />
+            This brought forth 3 improvements: Cost reduction, faster execution speed, and restricted risk (remove errors and security violations).<br />
+        </div>
+    </div>
+
+    <div id="history_5" class="step slide" data-x="2000" data-y="-2300">
+        <q>Enter the world of containers</q>
+        <img src="static/history_5_docker.jpg" />
+        <div class="notes">
+            Docker is a technology providing containers (or OS-level virtualization).
+        </div>
+    </div>
+
+    <div id="history_6" class="step slide text_align" data-x="1000" data-y="-2300">
+        <p>A strong ecosystem was built around Docker</p>
+        <img src="static/history_6.png" />
+        <div class="notes">
+            Prometheus, Docker compose, CoreOS, Mesosphere, Flocker, Cloud 66
+            Helios, Zookeeper, Drone, Twistlock, Weave cloud, Kubernetes
+        </div>
+    </div>
+
+    <div id="history_7" class="step slide text_align" data-x="0" data-y="-2300">
+        <p>And we'll dive into today's most popular orchestration engine:</p>
+        <img src="static/history_7.png" />
+        <div class="notes">
+            <ul>
+                <li>Created by Google, heavily influenced by Google’s Borg system, announced in mid-2014</li>
+                <li>Kubernetes v1 released on July 21, 2015. Google partnered with the Linux Foundation to form the Cloud Native Computing Foundation (CNCF)</li>
+                <li>Now used by Rancher Labs, Red Hat, CoreOS, IBM and Oracle.</li>
+                <li>Became the de-facto container deployment system</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <span class="try">What exactly is</span>
+        <h1>Kubernetes</h1>
+        <img src="static/title_interrogative.png" />
+    </div>
+
+    <div id="pods" class="step" data-x="850" data-y="3500" data-rotate="90" data-scale="5">
+        <p>
+        It has sets of <strong>containers</strong> like Docker called <strong>Pods</strong>
+        </p>
+        <img src="static/pods.svg" />
+        <div class="notes">
+            Group of containers that will be co-located on the same host machine and share the same resources and IP address.<br />
+            A pod can define a volume (local disk directory or network disk)<br />
+        </div>
+    </div>
+
+    <div id="nodes" class="step" data-x="3700" data-y="2800" data-rotate="180" data-scale="5">
+        <p>Pods run on <b>Nodes</b> <span class="thoughts">(worker machine)</span></p>
+        <img src="static/nodes.svg" />
+        <div class="notes">
+            A node is a worker machine in Kubernetes and may be a VM or physical machine, depending on the cluster.<br />
+            You might have heard of master/minions before, and nodes were previously called minions.
+            Multiple Pods can run on one Node.<br />
+            Every Kubernetes Node runs at least:
+            <ul>
+                <li>Kubelet, a process responsible for communication between the Kubernetes Master and the Node; it manages the Pods and the containers running on a machine.</li>
+                <li>A container runtime (like Docker, rkt) responsible for pulling the container image from a registry, unpacking the container, and running the application.</li>
+                <li>Containers should only be scheduled together in a single Pod if they are tightly coupled and need to share resources such as disk.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="kubelet" class="step" data-x="3600" data-y="1600" data-z="-15000" data-rotate="300" data-scale="0.2">
+        <h1>Kubelet</h1>
+        <q>An agent that runs on each node in the cluster. It makes sure that containers* are running and healthy in a pod</q><br />
+        <span class="footnote">* as described in Pod specification files</span>
+    </div>
+
+    <div id="master" class="step" data-x="4200" data-y="-2500" data-z="0" data-rotate="270" data-scale="5">
+        <p>These <b class="positioning">Minion</b> nodes are controlled by a <b class="rotating">Master</b> node, running master components*:</p>
+        <div class="footnotes">
+            <b class="scaling">kube-apiserver</b>|<b class="scaling">etcd</b>|<b class="scaling">kube-scheduler</b>|<b class="scaling">kube-controller-manager</b>|<b class="scaling">cloud-controller-manager</b>
+            <p>* It's ok to ignore these components, GCP even abstracted them</p>
+        </div>
+    </div>
+
+    <div id="cluster" class="step" data-x="7500" data-y="-1000" data-scale="6">
+        <p>This set of <b>master</b> components and <b>worker nodes</b> make up the<br /> <b class="cluster">cluster</b></p>
+        <img src="static/cluster.svg" />
+    </div>
+
+    <div id="selectors" class="step" data-x="8300" data-y="2500" data-rotate="20" data-scale="4">
+        <p>Wait, there's more!</p>
+        <q>You can group pods, no matter on which node they are running, through <b>labels</b> and <b>selectors</b>!</q>
+    </div>
+
+    <div id="services" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <p>Enter <b>Services</b> and <b>Controllers</b></p>
+    </div>
+
+    <div id="summary" class="step" data-x="6200" data-y="5400" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <q>Let's summarize what we've learnt</q>
+        <img src="static/summary.png" />
+    </div>
+
+    <div id="summary-2" class="step" data-x="8000" data-y="4300" data-z="-600" data-rotate-x="-40" data-rotate-y="70" data-scale="2">
+        <q>Here's another representation of a cluster</q>
+        <img src="static/summary-2.png" />
+    </div>
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-z="0" data-scale="10">
+    </div>
+
+</div>
+
+<div id="impress-toolbar"></div>
+<script type="text/javascript" src="impress.js/extras/impress-console/js/impressConsole.js"></script>
+<script type="text/javascript">
+  var impressConsoleCss = 'impress.js/extras/impress-console/css/impressConsole.css';
+</script>
+
+<script src="impress.js/js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

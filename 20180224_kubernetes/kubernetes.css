@@ -1,0 +1,154 @@
+/* General style */
+.step .notes {
+  display: none;
+}
+.text_align {
+    text-align: center;
+}
+
+
+/* Steps style */
+
+#history_1 {
+    background: url('static/history_1.jpg');
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#history_2 {
+    background: url('static/history_2.gif');
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#history_3>img {
+    width: 100%;
+    margin: auto;
+}
+
+#history_4>q {
+    margin-bottom: 15%;
+}
+#history_4>img {
+    width: 15%;
+    margin: auto;
+}
+
+#history_5 {
+    background: url('static/history_5.jpg') round;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+#history_5 img {
+    position: fixed;
+    width: 30%;
+    bottom: 10px;
+    left: 35%;
+}
+
+#history_6 img {
+    width: 100%;
+    margin-top: 40px;
+}
+
+#history_7 img {
+    width: 100%;
+    margin-top: 10%;
+}
+
+#title img {
+    display: block;
+    margin: auto;
+}
+
+#nodes {
+    width: 600px;
+    text-align: center;
+    font-size: 60px;
+    line-height: 1;
+}
+
+#nodes strong, /* Tinymce converts b to strong in impressionist */
+#nodes b {
+    display: block;
+    font-size: 150px;
+    line-height: 150px;
+}
+
+#nodes .thoughts {
+    font-size: 50px;
+    line-height: 50px;
+}
+
+#kubelet h1 {
+    font-size: 180px;
+
+    -webkit-transform: translateZ(50px);
+    -moz-transform:    translateZ(50px);
+    -ms-transform:     translateZ(50px);
+    -o-transform:      translateZ(50px);
+    transform:         translateZ(50px);
+}
+#kubelet .footnote {
+    font-size: 32px;
+}
+
+#master { width: 900px }
+#master b, #cluster b {
+    display: inline-block;
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+#master.present .positioning {
+    -webkit-transform: translateY(-10px);
+    -moz-transform:    translateY(-10px);
+    -ms-transform:     translateY(-10px);
+    -o-transform:      translateY(-10px);
+    transform:         translateY(-10px);
+}
+#master.present .rotating,#cluster.present .cluster {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform:    rotate(-10deg);
+    -ms-transform:     rotate(-10deg);
+    -o-transform:      rotate(-10deg);
+    transform:         rotate(-10deg);
+
+    -webkit-transition-delay: 0.25s;
+    -moz-transition-delay:    0.25s;
+    -ms-transition-delay:     0.25s;
+    -o-transition-delay:      0.25s;
+    transition-delay:         0.25s;
+}
+#master.present div {
+    font-size: 28px;
+}
+#master.present .scaling {
+    -webkit-transform: scale(0.7);
+    -moz-transform:    scale(0.7);
+    -ms-transform:     scale(0.7);
+    -o-transform:      scale(0.7);
+    transform:         scale(0.7);
+
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay:    0.5s;
+    -ms-transition-delay:     0.5s;
+    -o-transition-delay:      0.5s;
+    transition-delay:         0.5s;
+}
+
+#cluster {
+    width: 700px;
+    text-align: center;
+}
+
+#cluster .cluster {
+    font-size: 78px;
+}
+
+
+#summary-2 {
+    width: 1200px;
+}
