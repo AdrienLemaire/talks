@@ -25,3 +25,5 @@ https://docs.docker.com/compose/django/
   For demo purposes, also set
 
     ALLOWED_HOSTS = ['*']
+
+4. Go to http://localhost:8000/
