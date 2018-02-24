@@ -148,8 +148,11 @@
     font-size: 78px;
 }
 
-#summary-2 {
-    width: 1200px;
+#summary-2 q{
+    font-size: 36px;
+}
+#summary-2 img{
+    width: 100%;
 }
 
 #demo-1 p, #demo-2 p {
