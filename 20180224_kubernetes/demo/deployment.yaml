@@ -1,0 +1,68 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: owddm-stg
+  labels:
+    environment: staging
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owddm-stg
+        name: staging-deployment
+        environment: staging
+    spec:
+      containers:
+        - image: postgres
+          name: db
+          ports:
+            - containerPort: 5432
+        - image: gcr.io/miraidenshi-142903/web:v0.5
+          name: web
+          ports:
+            - containerPort: 8000
+---
+# Service for web
+apiVersion: v1
+kind: Service
+metadata:
+  name: stg-web
+  labels:
+    environment: staging
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+      name: web-port
+  selector:
+    environment: staging
+---
+# Service for db
+apiVersion: v1
+kind: Service
+metadata:
+  name: stg-db
+  labels:
+    environment: staging
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    environment: staging
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: stg-ingress
+spec:
+  backend:
+    serviceName: stg-web
+    servicePort: web-port
+---
